@@ -108,23 +108,45 @@
 
 
 
-  <meta name="description" content="慢慢尝试，总会有的！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJBlog">
-<meta property="og:url" content="https://mjtomato.github.io/index.html">
+  <meta name="description" content="步骤：一、 搭建环境准备二、安装hexo三、配置hexo，将其与github page 联系起来四、发布文章五、更换主题及简单配置 一、 搭建环境准备这里包括node.js的安装、git的安装、git账号注册和新建项目 二、 安装hexo cnpm install hexo -g   安装完毕后，不确定是否安装成功，可以通过 hexo -v查询，会出现下面信息： 之后新建一个空的文件夹，暂且叫mj">
+<meta name="keywords" content="hexo搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + Github Pages搭建的个人博客">
+<meta property="og:url" content="https://mjtomato.github.io/2018/07/18/Hexo + Github Pages搭建的个人博客/index.html">
 <meta property="og:site_name" content="MJBlog">
-<meta property="og:description" content="慢慢尝试，总会有的！">
+<meta property="og:description" content="步骤：一、 搭建环境准备二、安装hexo三、配置hexo，将其与github page 联系起来四、发布文章五、更换主题及简单配置 一、 搭建环境准备这里包括node.js的安装、git的安装、git账号注册和新建项目 二、 安装hexo cnpm install hexo -g   安装完毕后，不确定是否安装成功，可以通过 hexo -v查询，会出现下面信息： 之后新建一个空的文件夹，暂且叫mj">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/1769d5ef/3dd269d0.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/0a1c1abc/93fce600.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/5dfe02c2/106cadb7.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/bde15701/3d60a74c.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/c7184285/42d9f037.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/a839e760/b8dc6a95.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/6c4a3164/4f436b88.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/10527e62/a2d594e4.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/dccd6ffa/c0e47c9e.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/cd20f857/e1bd5164.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/b1c4519f/2e444828.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/76ee6ce8/4bf17312.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/edb78ad2/bb4a6485.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/4e6208f9/c792527a.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/875a3002/5920bed0.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/33e05571/c2ae7f32.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/67f470a8/97e40f24.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/f1301427/c41f2fbe.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/38e211f2/402349d1.png">
+<meta property="og:updated_time" content="2018-07-23T08:54:16.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MJBlog">
-<meta name="twitter:description" content="慢慢尝试，总会有的！">
+<meta name="twitter:title" content="Hexo + Github Pages搭建的个人博客">
+<meta name="twitter:description" content="步骤：一、 搭建环境准备二、安装hexo三、配置hexo，将其与github page 联系起来四、发布文章五、更换主题及简单配置 一、 搭建环境准备这里包括node.js的安装、git的安装、git账号注册和新建项目 二、 安装hexo cnpm install hexo -g   安装完毕后，不确定是否安装成功，可以通过 hexo -v查询，会出现下面信息： 之后新建一个空的文件夹，暂且叫mj">
+<meta name="twitter:image" content="http://pic.yupoo.com/mjyt7/1769d5ef/3dd269d0.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://mjtomato.github.io/"/>
+  <link rel="canonical" href="https://mjtomato.github.io/2018/07/18/Hexo + Github Pages搭建的个人博客/"/>
 
 
 
@@ -134,7 +156,7 @@
   };
 </script>
 
-  <title>MJBlog</title>
+  <title>Hexo + Github Pages搭建的个人博客 | MJBlog</title>
   
 
 
@@ -191,8 +213,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -229,7 +250,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -273,9 +294,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -307,11 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/18/Hexo + Github Pages搭建的个人博客/" itemprop="url">
-                  Hexo + Github Pages搭建的个人博客
-                </a>
+          <h1 class="post-title" itemprop="name headline">Hexo + Github Pages搭建的个人博客
               
             
           </h1>
@@ -425,9 +442,7 @@
       
 
       
-        
-          
-            <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>一、 搭建环境准备<br>二、安装hexo<br>三、配置hexo，将其与github page 联系起来<br>四、发布文章<br>五、更换主题及简单配置</p>
+        <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>一、 搭建环境准备<br>二、安装hexo<br>三、配置hexo，将其与github page 联系起来<br>四、发布文章<br>五、更换主题及简单配置</p>
 <h3 id="一、-搭建环境准备"><a href="#一、-搭建环境准备" class="headerlink" title="一、 搭建环境准备"></a>一、 搭建环境准备</h3><p>这里包括node.js的安装、git的安装、git账号注册和新建项目</p>
 <h3 id="二、-安装hexo"><a href="#二、-安装hexo" class="headerlink" title="二、 安装hexo"></a>二、 安装hexo</h3><blockquote>
 <p>cnpm install hexo -g </p>
@@ -510,8 +525,6 @@
 <p><strong>阅读数统计</strong><br>next主题作为github上星数最多的hexo主题，当然已经有人造好轮子了。而且next主题已经合并这个功能了，所以我们只需要配置_config.yml就可以了，请参考<a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">配置LeanCloud</a></p>
 <p>照着上面步骤完成之后，刷新自己的页面，发现文章内的阅读数出错了<br><img src="http://pic.yupoo.com/mjyt7/38e211f2/402349d1.png" alt="pic_16"><br>点击控制台的链接进去，按着提示完成即可<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/LEANCLOUD-COUNTER-SECURITY.md" target="_blank" rel="noopener">传送门</a></p>
 
-          
-        
       
     </div>
 
@@ -529,14 +542,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/hexo搭建/" rel="tag"># hexo搭建</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -546,14 +565,24 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODIxNi8xNDc0NA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -574,8 +603,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -651,6 +689,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤："><span class="nav-number">1.</span> <span class="nav-text">步骤：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、-搭建环境准备"><span class="nav-number">1.1.</span> <span class="nav-text">一、 搭建环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、-安装hexo"><span class="nav-number">1.2.</span> <span class="nav-text">二、 安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、-配置hexo，将其与github-page-联系起来"><span class="nav-number">1.3.</span> <span class="nav-text">三、 配置hexo，将其与github page 联系起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、-发布文章"><span class="nav-number">1.4.</span> <span class="nav-text">四、 发布文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、更换主题及简单配置"><span class="nav-number">1.5.</span> <span class="nav-text">五、更换主题及简单配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -785,6 +839,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 
@@ -803,6 +861,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
