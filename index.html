@@ -353,7 +353,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-23 16:54:16" itemprop="dateModified" datetime="2018-07-23T16:54:16+08:00">2018-07-23</time>
+                <time title="修改时间：2018-07-24 11:19:23" itemprop="dateModified" datetime="2018-07-24T11:19:23+08:00">2018-07-24</time>
               
             
           </span>
@@ -391,7 +391,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">4.8k</span>
               
 
               
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -427,8 +427,10 @@
       
         
           
-            <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>一、 搭建环境准备<br>二、安装hexo<br>三、配置hexo，将其与github page 联系起来<br>四、发布文章<br>五、更换主题及简单配置</p>
-<h3 id="一、-搭建环境准备"><a href="#一、-搭建环境准备" class="headerlink" title="一、 搭建环境准备"></a>一、 搭建环境准备</h3><p>这里包括node.js的安装、git的安装、git账号注册和新建项目</p>
+            <p>这个不算是新手的搭建流程，如果你恰巧看见这篇文章，希望你已经安装好node、git等软件，因为第一步的环境搭建准备并没有详写，默认都会了。希望能解决你的问题。</p>
+<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>一、 搭建环境准备<br>二、安装hexo<br>三、配置hexo，将其与github page 联系起来<br>四、发布文章<br>五、更换主题及简单配置</p>
+<h3 id="一、-搭建环境准备"><a href="#一、-搭建环境准备" class="headerlink" title="一、 搭建环境准备"></a>一、 搭建环境准备</h3><p>这里包括node.js的安装、git的安装、git账号注册和新建git项目<br><strong><font color="red">注意：</font> 新建项目的时候，项目名称也就是Repository name的格式必须是：yourgithbuName.github.io，这里的yourgithbuName必须和你的github名称保持一致</strong></p>
+<p>这个问题下面会说到，因为我没注意，也踩了这个坑了。</p>
 <h3 id="二、-安装hexo"><a href="#二、-安装hexo" class="headerlink" title="二、 安装hexo"></a>二、 安装hexo</h3><blockquote>
 <p>cnpm install hexo -g </p>
 </blockquote>
@@ -457,7 +459,7 @@
 </blockquote>
 <p><img src="http://pic.yupoo.com/mjyt7/6c4a3164/4f436b88.png" alt="pic_8"><br>之后重新生成部署hexo d -g，按道理来说应该是成功了。但我这里发生一个小插曲。我在部署过程中，也在执行着本地服务:hexo server，所以它一直提示下面这个错误。关闭本地服务那个进程就好了。<br><img src="http://pic.yupoo.com/mjyt7/10527e62/a2d594e4.png" alt="pic_9"><br>正常情况下会提示：<br>Deploy done: git</p>
 <p>然后按着git提示的网址访问，发现东西是出来的，但是css样式，js代码引入路径都错误了…<br><img src="http://pic.yupoo.com/mjyt7/dccd6ffa/c0e47c9e.png" alt="git_2"></p>
-<p>奇了怪了，都是按着教程走，怎么到我这就不行了呢。<br>刚开始想着是不是我的_config.yml文件配置错了，又重新走了一遍，还是不行。又去翻我的git项目，是不是我哪里写错了，始终没发现问题。<br>最后对比了好几篇搭建文章，终于发现，我的博客地址格式跟别人的是不一样的，开始以为是改版了没留意到这个问题。别人都是<a href="https://xxx.github.io/，而我的是这样的：" target="_blank" rel="noopener">https://xxx.github.io/，而我的是这样的：</a><br><img src="http://pic.yupoo.com/mjyt7/cd20f857/e1bd5164.png" alt="git_1"></p>
+<p>奇了怪了，都是按着教程走，怎么到我这就不行了呢。<br>刚开始想着是不是我的_config.yml文件配置错了，又重新走了一遍，还是不行。又去翻我的git项目，是不是我哪里写错了，始终没发现问题。<br>最后对比了好几篇搭建文章，终于发现，我的博客地址格式跟别人的是不一样的，开始以为是改版了没留意到这个问题。别人都是 <a href="https://xxx.github.io/，" target="_blank" rel="noopener">https://xxx.github.io/，</a>  而我的是这样的：<br><img src="http://pic.yupoo.com/mjyt7/cd20f857/e1bd5164.png" alt="git_1"></p>
 <p>原来在建项目的时候，要注意一点：<br><strong>项目名称也就是Repository name的格式必须是：yourgithbuName.github.io，这里的yourgithbuName必须和你的github名称保持一致</strong><br><img src="http://pic.yupoo.com/mjyt7/b1c4519f/2e444828.png" alt="git_3"></p>
 <p>最终会出现这句话：</p>
 <blockquote>
