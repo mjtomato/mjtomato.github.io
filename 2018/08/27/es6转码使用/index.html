@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="es6环境现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。 1、全局安装 babel-cli cnpm install -g babel-cli  (这里我使用的是淘宝镜像，比较快，你也可以直接npm) 想看是否安装成功，可以通过查看版本babel -V(大写V)，或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用es6">
+<meta property="og:url" content="https://mjtomato.github.io/2018/08/27/es6转码使用/index.html">
+<meta property="og:site_name" content="MJBlog">
+<meta property="og:description" content="es6环境现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。 1、全局安装 babel-cli cnpm install -g babel-cli  (这里我使用的是淘宝镜像，比较快，你也可以直接npm) 想看是否安装成功，可以通过查看版本babel -V(大写V)，或">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/2928eb22/f0d74b91.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/ac04584f/8818586d.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/649f8006/0f330c2e.png">
+<meta property="og:image" content="http://pic.yupoo.com/mjyt7/8d083ac0/b7df29be.png">
+<meta property="og:updated_time" content="2018-08-27T02:31:38.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用es6">
+<meta name="twitter:description" content="es6环境现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。 1、全局安装 babel-cli cnpm install -g babel-cli  (这里我使用的是淘宝镜像，比较快，你也可以直接npm) 想看是否安装成功，可以通过查看版本babel -V(大写V)，或">
+<meta name="twitter:image" content="http://pic.yupoo.com/mjyt7/2928eb22/f0d74b91.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://mjtomato.github.io/2018/08/27/es6转码使用/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用es6 | MJBlog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ac9cbd77562edc7a5c2145fe1e0a2650";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MJBlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mjtomato.github.io/2018/08/27/es6转码使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jiaminLiu">
+      <meta itemprop="description" content="慢慢尝试，总会有的！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MJBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用es6
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-08-27 10:29:19 / Updated at: 10:31:38" itemprop="dateCreated datePublished" datetime="2018-08-27T10:29:19+08:00">2018-08-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/27/es6转码使用/" class="leancloud_visitors" data-flag-title="使用es6">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="es6环境"><a href="#es6环境" class="headerlink" title="es6环境"></a>es6环境</h3><p>现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。</p>
+<h4 id="1、全局安装-babel-cli"><a href="#1、全局安装-babel-cli" class="headerlink" title="1、全局安装 babel-cli"></a>1、全局安装 babel-cli</h4><blockquote>
+<p>cnpm install -g babel-cli</p>
+</blockquote>
+<p>(这里我使用的是淘宝镜像，比较快，你也可以直接npm)</p>
+<p>想看是否安装成功，可以通过查看版本babel -V(大写V)，或者直接babel，会有许多命令行提示，说明安装成功了。否则就安装失败了。<br><img src="http://pic.yupoo.com/mjyt7/2928eb22/f0d74b91.png" alt="babel -V"></p>
+<h4 id="2、本地安装-babel-preset-es2015-babel-cli"><a href="#2、本地安装-babel-preset-es2015-babel-cli" class="headerlink" title="2、本地安装 babel-preset-es2015  babel-cli"></a>2、本地安装 babel-preset-es2015  babel-cli</h4><p>仅全局安装babel-cli是转码不够的，还需要本地安装babel-preset-es2015 babel-cli 两个模块</p>
+<p>安装这两个模块之前，先在本地新建一个文件夹叫es6，再新建一个index.js文件，随便写个箭头函数。<br>然后再在当前的cmd或者bash窗口输入 babel index.js 看看有没有成功。显然是没有成功的，嘿嘿。</p>
+<h6 id="题外话，补充几个babel的命令行参数-方便使用："><a href="#题外话，补充几个babel的命令行参数-方便使用：" class="headerlink" title="题外话，补充几个babel的命令行参数 方便使用："></a>题外话，补充几个babel的命令行参数 方便使用：</h6><pre>
+-o : 参数指定输出文件
+-s : 参数生成source map文件 eg:babel src/index.js -o dist/index.js -s
+-d : 参数指定输出目录,可整个目录下的文件对应转码 eg: babel src -d dist
+babel 不带任何参数,eg:babel src/index.js 直接在窗口下转码输出
+</pre>
+
+<h5 id="2-1-npm-初始化"><a href="#2-1-npm-初始化" class="headerlink" title="2.1 npm 初始化"></a>2.1 npm 初始化</h5><blockquote>
+<p>npm init -y<br>npm init会初始化一个package.json文件，-y 表示默认都同意，不用一个个问题确认。如下：<br><img src="http://pic.yupoo.com/mjyt7/ac04584f/8818586d.png" alt="npm init -y"></p>
+</blockquote>
+<h5 id="2-2-本地安装-babel-preset-es2015-babel-cli"><a href="#2-2-本地安装-babel-preset-es2015-babel-cli" class="headerlink" title="2.2 本地安装 babel-preset-es2015  babel-cli"></a>2.2 本地安装 babel-preset-es2015  babel-cli</h5><blockquote>
+<p>cnpm install –save-dev babel-preset-es2015 babel-cli</p>
+</blockquote>
+<p>–save-dev 会自动保存到package.json的devDependencies选项中。</p>
+<h5 id="2-3-新建-babelrc文件"><a href="#2-3-新建-babelrc文件" class="headerlink" title="2.3 新建.babelrc文件"></a>2.3 新建.babelrc文件</h5><p>在根目录下新建.babelrc文件,注意别写错名字了，不然转码也会不成功的，因为读的就是babelrc这个文件。并填写如下：<br><img src="http://pic.yupoo.com/mjyt7/649f8006/0f330c2e.png" alt=".babelrc"></p>
+<blockquote>
+<p>presets: 设定转码规则</p>
+</blockquote>
+<h5 id="2-4-大功告成"><a href="#2-4-大功告成" class="headerlink" title="2.4 大功告成"></a>2.4 大功告成</h5><p>以上步骤都完成的话，就基本大功告成啦。<br>最后在根目录中新建一个输出文件叫dist.js，然后在窗口输入babel index.js -o dist.js。如果没什么提示，说明ok了。如下图，左边是index.js用了箭头函数，右边是转码之后的dist.js，搞定。<br><img src="http://pic.yupoo.com/mjyt7/8d083ac0/b7df29be.png" alt="final"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/18/Hexo + Github Pages搭建的个人博客/" rel="next" title="Hexo + Github Pages搭建的个人博客">
+                <i class="fa fa-chevron-left"></i> Hexo + Github Pages搭建的个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODIxNi8xNDc0NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Daftar Isi
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Ikhtisar
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="jiaminLiu" />
+            
+              <p class="site-author-name" itemprop="name">jiaminLiu</p>
+              <p class="site-description motion-element" itemprop="description">慢慢尝试，总会有的！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posting</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cnblogs.com/MJyaaatou/" title="月宅" target="_blank">月宅</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#es6环境"><span class="nav-number">1.</span> <span class="nav-text">es6环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、全局安装-babel-cli"><span class="nav-number">1.1.</span> <span class="nav-text">1、全局安装 babel-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、本地安装-babel-preset-es2015-babel-cli"><span class="nav-number">1.2.</span> <span class="nav-text">2、本地安装 babel-preset-es2015  babel-cli</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题外话，补充几个babel的命令行参数-方便使用："><span class="nav-number">1.2.0.1.</span> <span class="nav-text">题外话，补充几个babel的命令行参数 方便使用：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-npm-初始化"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 npm 初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-本地安装-babel-preset-es2015-babel-cli"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 本地安装 babel-preset-es2015  babel-cli</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-新建-babelrc文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 新建.babelrc文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-大功告成"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 大功告成</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jiaminLiu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("eiGfj65yF0QMb6a5FloTz3Yu-gzGzoHsz", "UHw89hQlMD3i1WMKy7qIoEQI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
