@@ -110,8 +110,8 @@
 
   <meta name="description" content="es6环境现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。 1、全局安装 babel-cli cnpm install -g babel-cli  (这里我使用的是淘宝镜像，比较快，你也可以直接npm) 想看是否安装成功，可以通过查看版本babel -V(大写V)，或">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用es6">
-<meta property="og:url" content="https://mjtomato.github.io/2018/08/27/es6转码使用/index.html">
+<meta property="og:title" content="初探es6">
+<meta property="og:url" content="https://mjtomato.github.io/2018/08/27/初探es6/index.html">
 <meta property="og:site_name" content="MJBlog">
 <meta property="og:description" content="es6环境现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。 1、全局安装 babel-cli cnpm install -g babel-cli  (这里我使用的是淘宝镜像，比较快，你也可以直接npm) 想看是否安装成功，可以通过查看版本babel -V(大写V)，或">
 <meta property="og:locale" content="zh-Hans">
@@ -119,9 +119,9 @@
 <meta property="og:image" content="http://pic.yupoo.com/mjyt7/ac04584f/8818586d.png">
 <meta property="og:image" content="http://pic.yupoo.com/mjyt7/649f8006/0f330c2e.png">
 <meta property="og:image" content="http://pic.yupoo.com/mjyt7/8d083ac0/b7df29be.png">
-<meta property="og:updated_time" content="2018-08-27T02:31:38.216Z">
+<meta property="og:updated_time" content="2018-08-27T02:40:11.380Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用es6">
+<meta name="twitter:title" content="初探es6">
 <meta name="twitter:description" content="es6环境现在的JavaScript 引擎还不能完全支持es6的新语法、新特性。所以要想在页面中直接使用，是会报错的，这时候就需要使用babel将es2015的特性转换为ES5 标准的代码。 1、全局安装 babel-cli cnpm install -g babel-cli  (这里我使用的是淘宝镜像，比较快，你也可以直接npm) 想看是否安装成功，可以通过查看版本babel -V(大写V)，或">
 <meta name="twitter:image" content="http://pic.yupoo.com/mjyt7/2928eb22/f0d74b91.png">
 
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://mjtomato.github.io/2018/08/27/es6转码使用/"/>
+  <link rel="canonical" href="https://mjtomato.github.io/2018/08/27/初探es6/"/>
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>使用es6 | MJBlog</title>
+  <title>初探es6 | MJBlog</title>
   
 
 
@@ -236,7 +236,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -244,7 +244,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mjtomato.github.io/2018/08/27/es6转码使用/">
+    <link itemprop="mainEntityOfPage" href="https://mjtomato.github.io/2018/08/27/初探es6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jiaminLiu">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用es6
+          <h1 class="post-title" itemprop="name headline">初探es6
               
             
           </h1>
@@ -330,14 +330,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-08-27 10:29:19 / Updated at: 10:31:38" itemprop="dateCreated datePublished" datetime="2018-08-27T10:29:19+08:00">2018-08-27</time>
+              <time title="Created: 2018-08-27 10:29:19 / Modified: 10:40:11" itemprop="dateCreated datePublished" datetime="2018-08-27T10:29:19+08:00">2018-08-27</time>
             
 
             
@@ -355,7 +355,7 @@
 
           
           
-             <span id="/2018/08/27/es6转码使用/" class="leancloud_visitors" data-flag-title="使用es6">
+             <span id="/2018/08/27/初探es6/" class="leancloud_visitors" data-flag-title="初探es6">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -532,10 +532,10 @@ babel 不带任何参数,eg:babel src/index.js 直接在窗口下转码输出
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Daftar Isi
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Ikhtisar
+            Overview
           </li>
         </ul>
       
@@ -560,7 +560,7 @@ babel 不带任何参数,eg:babel src/index.js 直接在窗口下转码输出
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">posting</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -668,7 +668,7 @@ babel 不带任何参数,eg:babel src/index.js 直接在窗口下转码输出
 
 
 
-  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
 
 
 
